@@ -4,17 +4,18 @@ public class UseCase2PalindromeChecker {
 
         System.out.println("=================================");
         System.out.println("     Palindrome Checker App      ");
-        System.out.println("            UC11 Version         ");
+        System.out.println("            UC12 Version         ");
         System.out.println("=================================");
 
-        String input = "A man a plan a canal panama";
+        String input = "Never Odd Or Even";
 
-        // Object creation (OOPS)
-        PalindromeChecker checker = new PalindromeChecker();
+        // Choose strategy at runtime
+        PalindromeStrategy strategy = new DequeStrategy();
+        // PalindromeStrategy strategy = new StackStrategy();
 
-        boolean result = checker.checkPalindrome(input);
+        PalindromeChecker checker = new PalindromeChecker(strategy);
 
-        if (result) {
+        if (checker.check(input)) {
             System.out.println("\"" + input + "\" is a palindrome.");
         } else {
             System.out.println("\"" + input + "\" is not a palindrome.");

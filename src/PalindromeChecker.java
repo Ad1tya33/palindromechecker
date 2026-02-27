@@ -1,24 +1,13 @@
 public class PalindromeChecker {
 
-    // Encapsulated palindrome logic
-    public boolean checkPalindrome(String input) {
+    private PalindromeStrategy strategy;
 
-        if (input == null) {
-            return false;
-        }
+    // Strategy Injection
+    public PalindromeChecker(PalindromeStrategy strategy) {
+        this.strategy = strategy;
+    }
 
-        String normalized = input.toLowerCase().replaceAll("[^a-z]", "");
-
-        int start = 0;
-        int end = normalized.length() - 1;
-
-        while (start < end) {
-            if (normalized.charAt(start) != normalized.charAt(end)) {
-                return false;
-            }
-            start++;
-            end--;
-        }
-        return true;
+    public boolean check(String input) {
+        return strategy.isPalindrome(input);
     }
 }
